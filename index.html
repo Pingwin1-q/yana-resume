@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Юлия Тростина — Резюме</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #e94560;
+            --accent-light: #ff6b88;
+            --text: #f0f0f0;
+            --text-muted: #a0a0a0;
+            --background: #0f0f1e;
+            --card-bg: rgba(255, 255, 255, 0.03);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: var(--background);
+            color: var(--text);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Animated background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(233, 69, 96, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(22, 33, 62, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(233, 69, 96, 0.05) 0%, transparent 40%);
+            animation: backgroundShift 20s ease infinite;
+            z-index: -1;
+        }
+
+        @keyframes backgroundShift {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(-5%, -5%) rotate(3deg); }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Header */
+        header {
+            padding: 4rem 0 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            opacity: 0.5;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: flex-start;
+            gap: 3rem;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header-text {
+            flex: 1;
+        }
+
+        h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4rem;
+            font-weight: 300;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, var(--text) 0%, var(--accent-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            color: var(--accent);
+            font-weight: 300;
+            margin-bottom: 2rem;
+            letter-spacing: 0.05em;
+        }
+
+        .contact-info {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            color: var(--accent);
+            transform: translateX(5px);
+        }
+
+        .contact-item::before {
+            content: '';
+            width: 4px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 50%;
+        }
+
+        /* Main Content */
+        main {
+            padding: 3rem 0;
+        }
+
+        section {
+            margin-bottom: 5rem;
+            animation: fadeInUp 0.8s ease;
+            animation-fill-mode: both;
+        }
+
+        section:nth-child(1) { animation-delay: 0.1s; }
+        section:nth-child(2) { animation-delay: 0.2s; }
+        section:nth-child(3) { animation-delay: 0.3s; }
+        section:nth-child(4) { animation-delay: 0.4s; }
+        section:nth-child(5) { animation-delay: 0.5s; }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -0.5rem;
+            left: 0;
+            width: 60%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent), transparent);
+        }
+
+        /* About Section */
+        .about-text {
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 12px;
+            border: 1px solid rgba(233, 69, 96, 0.1);
+            font-size: 1.05rem;
+            line-height: 1.9;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-text::before {
+            content: '"';
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 8rem;
+            position: absolute;
+            top: -2rem;
+            left: 1rem;
+            color: var(--accent);
+            opacity: 0.1;
+        }
+
+        .work-format {
+            display: inline-block;
+            margin-top: 1.5rem;
+            padding: 0.6rem 1.5rem;
+            background: var(--accent);
+            color: white;
+            border-radius: 25px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-card {
+            background: var(--card-bg);
+            padding: 1.8rem;
+            border-radius: 12px;
+            border: 1px solid rgba(233, 69, 96, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-light));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            box-shadow: 0 10px 30px rgba(233, 69, 96, 0.2);
+        }
+
+        .skill-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .skill-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--accent-light);
+        }
+
+        .skill-card ul {
+            list-style: none;
+        }
+
+        .skill-card li {
+            padding: 0.4rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            font-size: 0.95rem;
+        }
+
+        .skill-card li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        /* Competencies */
+        .competencies-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .competency-item {
+            background: var(--card-bg);
+            padding: 1.2rem 1.5rem;
+            border-radius: 8px;
+            border-left: 3px solid var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .competency-item:hover {
+            background: rgba(233, 69, 96, 0.1);
+            transform: translateX(10px);
+        }
+
+        .competency-item::before {
+            content: '✓';
+            color: var(--accent);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* Experience Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 3rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, var(--accent), transparent);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid rgba(233, 69, 96, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -3.5rem;
+            top: 2rem;
+            width: 12px;
+            height: 12px;
+            background: var(--accent);
+            border-radius: 50%;
+            border: 3px solid var(--background);
+            box-shadow: 0 0 0 3px rgba(233, 69, 96, 0.3);
+        }
+
+        .timeline-item:hover {
+            transform: translateX(10px);
+            border-color: var(--accent);
+        }
+
+        .job-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            color: var(--accent-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .company-duration {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .company {
+            font-weight: 500;
+        }
+
+        .timeline-item ul {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .timeline-item li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .timeline-item li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 0;
+            border-top: 1px solid rgba(233, 69, 96, 0.1);
+            margin-top: 4rem;
+        }
+
+        .interests {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .interest-tag {
+            padding: 0.5rem 1.2rem;
+            background: var(--card-bg);
+            border: 1px solid rgba(233, 69, 96, 0.2);
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .interest-tag:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            transform: scale(1.05);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .subtitle {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .header-content {
+                flex-direction: column;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .timeline {
+                padding-left: 2rem;
+            }
+
+            .timeline-item::before {
+                left: -2.5rem;
+            }
+        }
+
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Selection */
+        ::selection {
+            background: var(--accent);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <div class="header-text">
+                    <h1>Юлия Тростина</h1>
+                    <div class="subtitle">Специалист по работе с клиентами | Юрист</div>
+                    <div class="contact-info">
+                        <div class="contact-item">Telegram: @ytrostina</div>
+                        <div class="contact-item">Email: напишите в телеграм</div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <section id="about">
+                <h2 class="section-title">О себе</h2>
+                <div class="about-text">
+                    Специалист с юридическим образованием и более чем 4-летним опытом работы в банковской сфере и клиентском сервисе. Успешно консультирую клиентов по сложным вопросам, обучаю сотрудников и выполняю управленческие функции. Демонстрирую быстрый карьерный рост: за 2 года в Альфа-Банке прошла путь от специалиста до ведущего специалиста с функциями наставника и заместителя руководителя.
+                    <span class="work-format">🏠 Работаю удалённо</span>
+                </div>
+            </section>
+
+            <section id="education">
+                <h2 class="section-title">Образование</h2>
+                <div class="about-text">
+                    <strong>Мордовский государственный университет</strong><br>
+                    Юридический факультет
+                </div>
+            </section>
+
+            <section id="skills">
+                <h2 class="section-title">Профессиональные навыки</h2>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <h3>Работа с клиентами</h3>
+                        <ul>
+                            <li>Консультирование (чат, телефон, очно)</li>
+                            <li>Работа с юридическими лицами</li>
+                            <li>Работа с физическими лицами</li>
+                            <li>Первичные юридические консультации</li>
+                        </ul>
+                    </div>
+                    <div class="skill-card">
+                        <h3>Управление и обучение</h3>
+                        <ul>
+                            <li>Обучение и наставничество</li>
+                            <li>Проведение собеседований</li>
+                            <li>Адаптация персонала</li>
+                            <li>Замещение руководителя отдела</li>
+                        </ul>
+                    </div>
+                    <div class="skill-card">
+                        <h3>Технические навыки</h3>
+                        <ul>
+                            <li>Работа с CRM и базами данных</li>
+                            <li>Уверенное владение ПК</li>
+                            <li>Корпоративные системы</li>
+                            <li>Опыт удалённой работы</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="competencies">
+                <h2 class="section-title">Ключевые компетенции</h2>
+                <div class="competencies-list">
+                    <div class="competency-item">Ответственность и самостоятельность</div>
+                    <div class="competency-item">Быстрая обучаемость</div>
+                    <div class="competency-item">Развитые коммуникативные навыки</div>
+                    <div class="competency-item">Энергичность и проактивность</div>
+                    <div class="competency-item">Стрессоустойчивость</div>
+                    <div class="competency-item">Умение работать в режиме многозадачности</div>
+                </div>
+            </section>
+
+            <section id="experience">
+                <h2 class="section-title">Опыт работы</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="job-title">Ведущий специалист по работе с клиентами</div>
+                        <div class="company-duration">
+                            <span class="company">Альфа-Банк</span>
+                            <span>•</span>
+                            <span>2 года</span>
+                        </div>
+                        <ul>
+                            <li>Консультирование корпоративных и частных клиентов в онлайн-чате</li>
+                            <li>Решение сложных и нестандартных клиентских запросов</li>
+                            <li>Обучение и стажировка новых сотрудников (наставничество)</li>
+                            <li>Проведение первичных собеседований с кандидатами</li>
+                            <li>Замещение руководителя отдела в его отсутствие</li>
+                            <li><strong>Достижение:</strong> карьерный рост до позиции ведущего специалиста</li>
+                        </ul>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="job-title">Специалист</div>
+                        <div class="company-duration">
+                            <span class="company">Т-Банк</span>
+                        </div>
+                        <ul>
+                            <li>Работа с документами клиентов банка</li>
+                            <li>Ведение и актуализация базы данных</li>
+                            <li>Полностью удалённый формат работы</li>
+                        </ul>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="job-title">Юрист</div>
+                        <div class="company-duration">
+                            <span class="company">Компания по банкротству</span>
+                        </div>
+                        <ul>
+                            <li>Первичное консультирование клиентов по вопросам банкротства</li>
+                            <li>Ведение клиентской базы</li>
+                            <li>Сопровождение клиентов на всех этапах процедуры</li>
+                        </ul>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="job-title">Администратор / Ассистент</div>
+                        <ul>
+                            <li>Организация работы офиса</li>
+                            <li>Взаимодействие с клиентами</li>
+                            <li>Ведение документации</li>
+                            <li>Административная поддержка руководителя</li>
+                        </ul>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="job-title">Оператор call-центра / Аниматор / Вожатая</div>
+                        <ul>
+                            <li>Консультирование клиентов по телефону</li>
+                            <li>Работа с детьми, организация досуга</li>
+                            <li>Развитие навыков коммуникации и работы в команде</li>
+                            <li>Работа в условиях высокой нагрузки</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <h2 class="section-title">Увлечения</h2>
+            <div class="interests">
+                <span class="interest-tag">🏃‍♀️ Спорт</span>
+                <span class="interest-tag">🎵 Музыка</span>
+                <span class="interest-tag">🎬 Кино</span>
+            </div>
+            <p style="color: var(--text-muted); margin-top: 2rem;">
+                Рассматриваю только удалённые вакансии
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        // Smooth scroll animation on load
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('section');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+
+            // Parallax effect for background
+            let ticking = false;
+            document.addEventListener('scroll', () => {
+                if (!ticking) {
+                    window.requestAnimationFrame(() => {
+                        const scrolled = window.pageYOffset;
+                        document.body.style.setProperty('--scroll', scrolled * 0.5 + 'px');
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
